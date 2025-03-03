@@ -90,10 +90,10 @@ double EasyParserQt::eval_sample_no_bracket(QString formula, ERRORINFO_ST &info)
     formula.replace(" ","");
 
     // extract formula item
-    QVector<FMULITEM_ST> FormulaList;
+    QList<FMULITEM_ST> FormulaList;
 
     // QPair(level,index)
-    QVector<QPair<int, int>> OperatorLevelList;
+    QList<QPair<int, int>> OperatorLevelList;
 
     // segmente item to operator and operand
     QString tmpstr;
@@ -121,7 +121,7 @@ double EasyParserQt::eval_sample_no_bracket(QString formula, ERRORINFO_ST &info)
             bool cvtOK = false;
             double res = tmpstr.toDouble(&cvtOK);
             if(cvtOK){
-                FormulaList.append(FormulaItem(FMULITEMTYPE_EM::Operand, FMULITEMTYPE_VALUE(res)));
+                FormulaList.append(FMULITEM_ST(FMULITEMTYPE_EM::Operand, FMULITEMTYPE_VALUE(res)));
             }
             else{
                 // report error
@@ -134,7 +134,7 @@ double EasyParserQt::eval_sample_no_bracket(QString formula, ERRORINFO_ST &info)
             tmpstr.clear();
 
             // opterator
-            FormulaList.append(FormulaItem(FMULITEMTYPE_EM::Operator,  FMULITEMTYPE_VALUE(formula.at(i).toLatin1())));
+            FormulaList.append(FMULITEM_ST(FMULITEMTYPE_EM::Operator,  FMULITEMTYPE_VALUE(formula.at(i).toLatin1())));
 
             continue;
         }

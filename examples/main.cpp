@@ -1,4 +1,4 @@
-﻿#include <gui_test/MainWindow.h>
+﻿#include <MainWindow.h>
 #include <QStyleFactory>
 #include <QApplication>
 

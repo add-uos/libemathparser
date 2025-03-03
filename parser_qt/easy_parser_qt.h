@@ -35,9 +35,9 @@ typedef union FormulaValue{
 
 typedef struct FormulaItem
 {
-    FormulaItem(FormulaItemType Type, FormulaValue Value) {
-        value = Value;
+    FormulaItem(FMULITEMTYPE_EM Type, FMULITEMTYPE_VALUE Value) {
         type = Type;
+        value = Value;
     }
 
     FMULITEMTYPE_EM type;

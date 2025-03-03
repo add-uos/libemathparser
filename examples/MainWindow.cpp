@@ -226,9 +226,3 @@ void MainWindow::on_delete_recordBtn_clicked()
     m_formulas.pop_back();
 }
 
-
-void MainWindow::on_input_saveBtn_clicked()
-{
-
-}
-

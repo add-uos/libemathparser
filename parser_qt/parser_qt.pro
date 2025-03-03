@@ -1,3 +1,7 @@
+TEMPLATE = lib
+
+TARGET = eparserqt
+
 HEADERS += \
     $$PWD/easy_parser_qt.h
 

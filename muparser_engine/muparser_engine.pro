@@ -1,3 +1,7 @@
+TEMPLATE = lib
+
+TARGET = muparser
+
 HEADERS += \
     $$PWD/OperaionByMuParser.h \
     $$PWD/muParser.h \

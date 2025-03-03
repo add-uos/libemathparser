@@ -41,8 +41,6 @@ private slots:
 
     void on_delete_recordBtn_clicked();
 
-    void on_input_saveBtn_clicked();
-
 private:
     Ui::MainWindow *ui;
 

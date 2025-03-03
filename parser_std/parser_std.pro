@@ -1,3 +1,7 @@
+TEMPLATE = lib
+
+TARGET = eparserstd
+
 HEADERS += \
     $$PWD/easy_parser_std.h
 

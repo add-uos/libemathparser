@@ -1,0 +1,6 @@
+libemathparser (1.0.0) UNRELEASED; urgency=medium
+
+  * Initial release.
+  * Use Debian to organize the project.
+
+ -- zhy <2063218120@qq.com>  Tue, 04 Mar 2025 10:50:02 +0800

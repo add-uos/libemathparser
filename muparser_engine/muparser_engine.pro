@@ -23,3 +23,9 @@ SOURCES += \
     $$PWD/muParserCallback.cpp \
     $$PWD/muParserError.cpp \
     $$PWD/muParserTokenReader.cpp
+
+target.path = /usr/lib/
+files.files += $$PWD/$$HEADERS
+files.path = /usr/inclue/libemathparser/
+
+INSTALLS += target files

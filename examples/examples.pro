@@ -34,5 +34,6 @@ unix:!macx: LIBS += -L$$OUT_PWD/../parser_qt/ -leparserqt
 unix:!macx: LIBS += -L$$OUT_PWD/../parser_std/ -leparserstd
 unix:!macx: LIBS += -L$$OUT_PWD/../muparser_engine/ -lmuparser
 
-message($$PWD)
-message($$OUT_PWD)
+target.path = /usr/bin/
+
+INSTALLS += target

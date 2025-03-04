@@ -1,0 +1,15 @@
+Source: libemathparser
+Section: utils
+Priority: optional
+Maintainer: zhy <2063218120@qq.com>
+Build-Depends: debhelper, pkg-config, qt5-qmake,
+ libqt5x11extras5-dev, qttools5-dev-tools,
+ qtbase5-dev-tools
+Standards-Version: 3.9.8
+Homepage: https://github.com/SunStorm2018/libemathparser
+
+Package: libemathparser
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Simple toolkit to support the calculation of four operational strings
+ Simple toolkit to support the calculation of four operational strings

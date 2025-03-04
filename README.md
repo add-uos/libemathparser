@@ -1,4 +1,4 @@
-# easy-math-parser
+# libemathparser
 
 A simple toolkit written by C++ to support the calculation of four operational strings. Inspired by [Muparser](https://beltoforion.de/en/muparser/features.php#idStart).
 
@@ -10,13 +10,13 @@ For the first time, the tool is also an expression that supports parenthesis pre
 ## 1. Code Structure Description
 
 - root folder
-  - common
   - muparser_engine
   - parser_qt : toolkit written by qt5.
   - parser_std : toolkit written by c++ stdand.
   - muparser_engine : Muparser library test api.
-  - gui_test : use gui to test the toolkit.
-  - test_data : some test data.
+  - examples : use gui to test the toolkit.
+      - common : common tools.
+      - test_data : some test data.
   - main.cpp
 
 ## 2. Sample Usage

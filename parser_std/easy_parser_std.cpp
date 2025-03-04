@@ -1,6 +1,6 @@
 ﻿#include "easy_parser_std.h"
 
-namespace ZHYSTD {
+namespace EPARSERSTD {
 
 /*
  * No Errors Occurred.

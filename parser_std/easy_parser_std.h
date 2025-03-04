@@ -10,7 +10,7 @@
 #define Q_QNAN NAN
 #define Q_INFINITY INFINITY
 
-namespace ZHYSTD {
+namespace EPARSERSTD {
 
 typedef enum FormulaItemType{
     Operator,

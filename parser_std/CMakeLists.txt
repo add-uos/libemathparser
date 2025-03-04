@@ -10,3 +10,6 @@ file(GLOB SOURCES
 
 add_library(eparserstd SHARED ${SOURCES})
 
+install(TARGETS eparserstd DESTINATION /usr/lib)
+file(GLOB HEADER_FILES "*.h")
+install(FILES ${HEADER_FILES} DESTINATION /usr/inclue/libemathparser/)

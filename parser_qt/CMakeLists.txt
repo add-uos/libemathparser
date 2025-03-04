@@ -20,3 +20,7 @@ target_link_libraries(eparserqt
     PUBLIC
         Qt5::Core
 )
+
+install(TARGETS eparserqt DESTINATION /usr/lib)
+file(GLOB HEADER_FILES "*.h")
+install(FILES ${HEADER_FILES} DESTINATION /usr/inclue/libemathparser/)

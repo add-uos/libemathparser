@@ -31,7 +31,7 @@ Use the **easy_parser_qt** like follow:
 ERRORINFO_ST info = EasyParserQt::E000;
 
 // 3. eval the math formula result.
-double zhy_res = EasyParserQt::eval("1+2.2*-2*4-54^3+43", info);
+double eparser_res = EasyParserQt::eval("1+2.2*-2*4-54^3+43", info);
 ```
 
 <br/>
@@ -46,7 +46,7 @@ Use the **easy_parser_std** like follow:
 ZHYSTD::ERRORINFO_ST zhy_info = ZHYSTD::EasyParserStd::E000;
 
 // 3. eval the math formula result.
-double zhy_res = ZHYSTD::EasyParserStd::eval("1+2.2*-2*4-54^3+43", info);
+double eparser_res = EPARSERSTD::EasyParserStd::eval("1+2.2*-2*4-54^3+43", info);
 ```
 
 ## 3.Parser Support
@@ -74,3 +74,68 @@ In this toolkit, To speed up processing, operands are double-precision floating-
 |Operator|Function|Explain|Level|
 |:--:|:--:|:--:|:--:|
 |( )|Parenthesis|The operations are limited to calculate the data in parentheses|3|
+
+## 4.Build And Install
+
+### 1. Build Dependencies
+
+- GCC (>= 4.6)
+- cmake (Optional)
+- qmake
+- pkg-config
+- Qt5 (5.7 or newer)
+
+### 2. Debian / Ubuntu / Deepin
+
+There are two compilation methods here: one is a package building method based on the Debian package build system, and the other is a straightforward command-line compilation method. This is the recommended approach.
+
+first download the sources:
+
+```bash
+https://github.com/SunStorm2018/libemathparser.git
+```
+
+Use Debian package build system:
+
+```bash
+cd libemathparser
+
+# install build dependencies
+sudo sudo apt build-dep .
+
+# build deb package
+dpkg-buildpackage -us -uc -b
+```
+
+Build libemathparser step by step as follows:
+
+### 3. Other Linux Platform
+
+Build with Qt5:
+
+```bash
+# install build dependencies
+sudo apt-get install build-essential cmake pkg-config qt5-qmake qt5-default qttools5-dev-tools  qttools5-dev qtbase5-dev qtbase5-dev-tools 
+```
+
+use **qmake**, the libemathparser will install in **/usr/lib ;  /usr/inclue/libemathparser/**:
+
+```bash
+qmake
+make
+sudo make install
+```
+
+use **cmake**, , the libemathparser will install in **/usr/lib ;  /usr/inclue/libemathparser/**
+
+```bash
+mkdir build-release
+cd build-release
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+sudo make install
+```
+
+### 4. Windows
+
+Use Qt Creator to build.

@@ -16,3 +16,7 @@ target_link_libraries(muparser
     PUBLIC
         Qt5::Core
 )
+
+install(TARGETS muparser DESTINATION /usr/lib)
+file(GLOB HEADER_FILES "*.h")
+install(FILES ${HEADER_FILES} DESTINATION /usr/inclue/libemathparser/)

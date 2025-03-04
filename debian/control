@@ -2,9 +2,16 @@ Source: libemathparser
 Section: utils
 Priority: optional
 Maintainer: zhy <2063218120@qq.com>
-Build-Depends: debhelper, pkg-config, qt5-qmake,
- libqt5x11extras5-dev, qttools5-dev-tools,
- qtbase5-dev-tools
+Build-Depends: debhelper,
+	build-essential,
+	cmake,
+	pkg-config, 
+	qt5-qmake,
+	qt5-default,
+	qttools5-dev-tools,
+	qttools5-dev,
+ 	qtbase5-dev-tools,
+	qtbase5-dev	
 Standards-Version: 3.9.8
 Homepage: https://github.com/SunStorm2018/libemathparser
 

@@ -18,7 +18,7 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Gui Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Widgets)
 
 # 添加可执行文件
-add_executable(gui_example
+add_executable(example
     ./common/QFileHelper.h
     ./common/QFileHelper.cpp
     MainWindow.ui
@@ -28,7 +28,7 @@ add_executable(gui_example
 )
 
 # 添加包含路径
-target_include_directories(gui_example
+target_include_directories(example
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/..
         ${CMAKE_CURRENT_SOURCE_DIR}/../parser_qt
@@ -37,7 +37,7 @@ target_include_directories(gui_example
 
 # 设置链接
 if(USE_QT6)
-    target_link_libraries(gui_example
+    target_link_libraries(example
         PRIVATE
             eparserstd
             eparserqt
@@ -48,7 +48,7 @@ if(USE_QT6)
     )
 else()
     # Qt5 链接，使用原来正确的方式
-    target_link_libraries(gui_example
+    target_link_libraries(example
         PRIVATE
             eparserstd
             eparserqt
@@ -58,3 +58,6 @@ else()
             Qt${QT_VERSION_MAJOR}::Widgets
     )
 endif()
+
+
+install(TARGETS example DESTINATION ${CMAKE_INSTALL_BINDIR})

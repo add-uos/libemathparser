@@ -8,7 +8,11 @@ file(GLOB SOURCES
     "*.h"
 )
 
-add_library(eparserstd SHARED ${SOURCES})
+if (WIN32)
+    add_library(eparserstd STATIC ${SOURCES})
+elseif (UNIX)
+    add_library(eparserstd SHARED ${SOURCES})
+endif()
 
 install(TARGETS eparserstd DESTINATION /usr/lib)
 file(GLOB HEADER_FILES "*.h")

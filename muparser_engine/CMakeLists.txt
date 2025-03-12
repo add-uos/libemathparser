@@ -10,7 +10,11 @@ file(GLOB SOURCES
 
 find_package(Qt5 COMPONENTS Core  REQUIRED)
 
-add_library(muparser SHARED ${SOURCES})
+if (WIN32)
+    add_library(muparser STATIC ${SOURCES})
+elseif (UNIX)
+    add_library(muparser SHARED ${SOURCES})
+endif()
 
 target_link_libraries(muparser
     PUBLIC

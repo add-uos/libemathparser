@@ -14,7 +14,11 @@ file(GLOB SOURCES
     "*.h"
 )
 
-add_library(eparserqt SHARED ${SOURCES})
+if (WIN32)
+    add_library(eparserqt STATIC ${SOURCES})
+elseif (UNIX)
+    add_library(eparserqt SHARED ${SOURCES})
+endif()
 
 target_link_libraries(eparserqt
     PUBLIC

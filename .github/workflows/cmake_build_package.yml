@@ -1,0 +1,106 @@
+name: Qt CMake Build and Package
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: 5.15.2
+          host: linux
+          target: desktop
+          arch: gcc_64
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libgl1-mesa-dev cmake
+
+      - name: Configure project with CMake
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_PREFIX_PATH=${{ env.QT_PREFIX }}
+
+      - name: Build project
+        run: |
+          cd build
+          make
+
+      - name: Package executable
+        run: |
+          mkdir -p package
+          pwd
+          ls -al
+          ls -al ..
+          cp ./build/examples/example                   ./package/
+          cp ./build/muparser_engine/libmuparser.so     ./package/
+          cp ./build/parser_qt/libeparserqt.so          ./package/
+          cp ./build/parser_std/libeparserstd.so        ./package/
+          #cp -r ${{ env.QT_PREFIX }}/lib               ./package/
+          tar -czvf libemathparser_linux.tar.gz ./package
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: libemathparser_ubuntu
+          path: ./package/libemathparser_linux.tar.gz          
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: 5.15.2
+          host: windows
+          target: desktop
+          arch: win64_msvc2019_64
+
+      - name: Install dependencies
+        run: |
+          choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+
+      - name: Configure project with CMake
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_PREFIX_PATH=${{ env.QT_PREFIX }}
+
+      - name: Build project
+        run: |
+          cd build
+          cmake --build . --config Release
+
+      - name: Package executable
+        run: |
+          cd ..
+          mkdir -p package
+          cp ./libemathparser/build/examples/Release/example.exe            ./package/
+          cp ./libemathparser/build/muparser_engine/Release/muparser.lib    ./package/
+          cp ./libemathparser/build/parser_qt/Release/eparserqt.lib         ./package/
+          cp ./libemathparser/build/parser_std/Release/eparserstd.lib       ./package/
+          cd package
+          7z a libemathparser_windows.zip .
+          pwd
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: libemathparser_windows
+          path: D:/a/libemathparser/package/libemathparser_windows.zip
